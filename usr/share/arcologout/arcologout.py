@@ -108,7 +108,7 @@ class TransparentWindow(Gtk.Window):
         self.set_app_paintable(True)
         self.present()
 
-        GUI.GUI(self, Gtk, GdkPixbuf, fn.working_dir, fn.os, Gdk, fn)
+        GUI.GUI(self, Gtk, GdkPixbuf, fn.themes_dir, fn.os, Gdk, fn)
         if not fn.os.path.isfile("/tmp/arcologout.lock"):
             with open("/tmp/arcologout.lock", "w") as f:
                 f.write("")
@@ -162,46 +162,46 @@ class TransparentWindow(Gtk.Window):
     def on_mouse_in(self, widget, event, data):
         if data == self.binds.get('shutdown'):
             psh = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/shutdown_blur.svg'), self.icon, self.icon)
+                fn.os.path.join(fn.themes_dir, self.theme + '/shutdown_blur.svg'), self.icon, self.icon)
             self.imagesh.set_from_pixbuf(psh)
             self.lbl1.set_markup("<span size=\"" + str(self.font) + "000\" foreground=\"" + self.hover + "\">Shutdown (S)</span>")
         elif data == self.binds.get('restart'):
             pr = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/restart_blur.svg'), self.icon, self.icon)
+                fn.os.path.join(fn.themes_dir, self.theme + '/restart_blur.svg'), self.icon, self.icon)
             self.imager.set_from_pixbuf(pr)
             self.lbl2.set_markup("<span size=\"" + str(self.font) + "000\" foreground=\"" + self.hover + "\">Reboot (R)</span>")
         elif data == self.binds.get('suspend'):
             ps = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/suspend_blur.svg'), self.icon, self.icon)
+                fn.os.path.join(fn.themes_dir, self.theme + '/suspend_blur.svg'), self.icon, self.icon)
             self.images.set_from_pixbuf(ps)
             self.lbl3.set_markup("<span size=\"" + str(self.font) + "000\" foreground=\"" + self.hover + "\">Suspend (U)</span>")
         elif data == self.binds.get('lock'):
             plk = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/lock_blur.svg'), self.icon, self.icon)
+                fn.os.path.join(fn.themes_dir, self.theme + '/lock_blur.svg'), self.icon, self.icon)
             self.imagelk.set_from_pixbuf(plk)
             self.lbl4.set_markup("<span size=\"" + str(self.font) + "000\" foreground=\"" + self.hover + "\">Lock (K)</span>")
         elif data == self.binds.get('logout'):
             plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/logout_blur.svg'), self.icon, self.icon)
+                fn.os.path.join(fn.themes_dir, self.theme + '/logout_blur.svg'), self.icon, self.icon)
             self.imagelo.set_from_pixbuf(plo)
             self.lbl5.set_markup("<span size=\"" + str(self.font) + "000\" foreground=\"" + self.hover + "\">Logout (L)</span>")
         elif data == self.binds.get('cancel'):
             plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/cancel_blur.svg'), self.icon, self.icon)
+                fn.os.path.join(fn.themes_dir, self.theme + '/cancel_blur.svg'), self.icon, self.icon)
             self.imagec.set_from_pixbuf(plo)
             self.lbl6.set_markup("<span size=\"" + str(self.font) + "000\" foreground=\"" + self.hover + "\">Cancel (ESC)</span>")
         elif data == self.binds.get('hibernate'):
             plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/hibernate_blur.svg'), self.icon, self.icon)
+                fn.os.path.join(fn.themes_dir, self.theme + '/hibernate_blur.svg'), self.icon, self.icon)
             self.imageh.set_from_pixbuf(plo)
             self.lbl7.set_markup("<span size=\"" + str(self.font) + "000\" foreground=\"" + self.hover + "\">Hibernate (H)</span>")
         elif data == self.binds.get('settings'):
             pset = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                fn.os.path.join(fn.working_dir, 'configure_blur.svg'), 48, 48)
+                fn.os.path.join(fn.themes_dir, 'configure_blur.svg'), 48, 48)
             self.imageset.set_from_pixbuf(pset)
         elif data == 'light':
             pset = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                fn.os.path.join(fn.working_dir, 'light_blur.svg'), 48, 48)
+                fn.os.path.join(fn.themes_dir, 'light_blur.svg'), 48, 48)
             self.imagelig.set_from_pixbuf(pset)
         event.window.set_cursor(Gdk.Cursor(Gdk.CursorType.HAND2))
 
@@ -209,46 +209,46 @@ class TransparentWindow(Gtk.Window):
         if not self.active:
             if data == self.binds.get('shutdown'):
                 psh = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                    fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/shutdown.svg'), self.icon, self.icon)
+                    fn.os.path.join(fn.themes_dir, self.theme + '/shutdown.svg'), self.icon, self.icon)
                 self.imagesh.set_from_pixbuf(psh)
                 self.lbl1.set_markup("<span size=\"" + str(self.font) + "000\">Shutdown</span>")
             elif data == self.binds.get('restart'):
                 pr = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                    fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/restart.svg'), self.icon, self.icon)
+                    fn.os.path.join(fn.themes_dir, self.theme + '/restart.svg'), self.icon, self.icon)
                 self.imager.set_from_pixbuf(pr)
                 self.lbl2.set_markup("<span size=\"" + str(self.font) + "000\">Reboot</span>")
             elif data == self.binds.get('suspend'):
                 ps = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                    fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/suspend.svg'), self.icon, self.icon)
+                    fn.os.path.join(fn.themes_dir, self.theme + '/suspend.svg'), self.icon, self.icon)
                 self.images.set_from_pixbuf(ps)
                 self.lbl3.set_markup("<span size=\"" + str(self.font) + "000\">Suspend</span>")
             elif data == self.binds.get('lock'):
                 plk = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                    fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/lock.svg'), self.icon, self.icon)
+                    fn.os.path.join(fn.themes_dir, self.theme + '/lock.svg'), self.icon, self.icon)
                 self.imagelk.set_from_pixbuf(plk)
                 self.lbl4.set_markup("<span size=\"" + str(self.font) + "000\">Lock</span>")
             elif data == self.binds.get('logout'):
                 plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                    fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/logout.svg'), self.icon, self.icon)
+                    fn.os.path.join(fn.themes_dir, self.theme + '/logout.svg'), self.icon, self.icon)
                 self.imagelo.set_from_pixbuf(plo)
                 self.lbl5.set_markup("<span size=\"" + str(self.font) + "000\">Logout</span>")
             elif data == self.binds.get('cancel'):
                 plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                    fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/cancel.svg'), self.icon, self.icon)
+                    fn.os.path.join(fn.themes_dir, self.theme + '/cancel.svg'), self.icon, self.icon)
                 self.imagec.set_from_pixbuf(plo)
                 self.lbl6.set_markup("<span size=\"" + str(self.font) + "000\">Cancel</span>")
             elif data == self.binds.get('hibernate'):
                 plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                    fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/hibernate.svg'), self.icon, self.icon)
+                    fn.os.path.join(fn.themes_dir, self.theme + '/hibernate.svg'), self.icon, self.icon)
                 self.imageh.set_from_pixbuf(plo)
                 self.lbl7.set_markup("<span size=\"" + str(self.font) + "000\">Hibernate</span>")
             elif data == self.binds.get('settings'):
                 pset = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                    fn.os.path.join(fn.working_dir, 'configure.svg'), 48, 48)
+                    fn.os.path.join(fn.themes_dir, 'configure.svg'), 48, 48)
                 self.imageset.set_from_pixbuf(pset)
             elif data == 'light':
                 pset = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                    fn.os.path.join(fn.working_dir, 'light.svg'), 48, 48)
+                    fn.os.path.join(fn.themes_dir, 'light.svg'), 48, 48)
                 self.imagelig.set_from_pixbuf(pset)
 
     def on_click(self, widget, event, data):

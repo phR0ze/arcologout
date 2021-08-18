@@ -1,8 +1,6 @@
-
 # =====================================================
 #        Authors Brad Heffernan and Erik Dubois
 # =====================================================
-
 import subprocess
 import os
 import shutil
@@ -11,9 +9,8 @@ import configparser
 
 home = os.path.expanduser("~")
 base_dir = os.path.dirname(os.path.realpath(__file__))
-# here = Path(__file__).resolve()
-working_dir = ''.join([str(Path(__file__).parents[2]), "/share/arcologout-themes/"])
-# config = "/etc/arcologout.conf"
+themes_dir = ''.join([str(Path(__file__).parents[2]), "/share/arcologout/themes/"])
+
 if os.path.isfile(home + "/.config/arcologout/arcologout.conf"):
     config = home + "/.config/arcologout/arcologout.conf"
 else:
@@ -27,17 +24,14 @@ def _get_position(lists, value):
 
 
 def _get_themes():
-    y = [x for x in os.listdir(working_dir + "themes")]
+    y = [x for x in os.listdir(themes_dir) if os.path.isdir(os.path.join(themes_dir, x))]
     y.sort()
     return y
 
 
 def cache_bl(self, GLib, Gtk):
     if os.path.isfile("/usr/bin/betterlockscreen"):
-        with subprocess.Popen(["betterlockscreen", "-u",
-                               self.wallpaper],
-                              shell=False,
-                              stdout=subprocess.PIPE) as f:
+        with subprocess.Popen(["betterlockscreen", "-u", self.wallpaper], shell=False, stdout=subprocess.PIPE) as f:
             for line in f.stdout:
                 GLib.idle_add(self.lbl_stat.set_markup, "<span size=\"x-large\"><b>" + line.decode() + "</b></span>")
 
@@ -98,7 +92,7 @@ def get_config(self, Gdk, Gtk, config):
 
         if len(self.theme) > 1:
             style_provider = Gtk.CssProvider()
-            style_provider.load_from_path(working_dir + 'themes/' + self.theme + '/theme.css')
+            style_provider.load_from_path(themes_dir + self.theme + '/theme.css')
 
             Gtk.StyleContext.add_provider_for_screen(
                 Gdk.Screen.get_default(),
@@ -174,37 +168,37 @@ def button_active(self, data, GdkPixbuf):
     try:
         if data == self.binds['shutdown']:
             psh = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                os.path.join(working_dir, 'themes/' + self.theme + '/shutdown_blur.svg'), self.icon, self.icon)
+                os.path.join(themes_dir, self.theme + '/shutdown_blur.svg'), self.icon, self.icon)
             self.imagesh.set_from_pixbuf(psh)
             self.lbl1.set_markup("<span foreground=\"white\">Shutdown</span>")
         elif data == self.binds['restart']:
             pr = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                os.path.join(working_dir, 'themes/' + self.theme + '/restart_blur.svg'), self.icon, self.icon)
+                os.path.join(themes_dir, self.theme + '/restart_blur.svg'), self.icon, self.icon)
             self.imager.set_from_pixbuf(pr)
             self.lbl2.set_markup("<span foreground=\"white\">Restart</span>")
         elif data == self.binds['suspend']:
             ps = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                os.path.join(working_dir, 'themes/' + self.theme + '/suspend_blur.svg'), self.icon, self.icon)
+                os.path.join(themes_dir, self.theme + '/suspend_blur.svg'), self.icon, self.icon)
             self.images.set_from_pixbuf(ps)
             self.lbl3.set_markup("<span foreground=\"white\">Suspend</span>")
         elif data == self.binds['lock']:
             plk = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                os.path.join(working_dir, 'themes/' + self.theme + '/lock_blur.svg'), self.icon, self.icon)
+                os.path.join(themes_dir, self.theme + '/lock_blur.svg'), self.icon, self.icon)
             self.imagelk.set_from_pixbuf(plk)
             self.lbl4.set_markup("<span foreground=\"white\">Lock</span>")
         elif data == self.binds['logout']:
             plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                os.path.join(working_dir, 'themes/' + self.theme + '/logout_blur.svg'), self.icon, self.icon)
+                os.path.join(themes_dir, self.theme + '/logout_blur.svg'), self.icon, self.icon)
             self.imagelo.set_from_pixbuf(plo)
             self.lbl5.set_markup("<span foreground=\"white\">Logout</span>")
         elif data == self.binds['cancel']:
             plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                os.path.join(working_dir, 'themes/' + self.theme + '/cancel_blur.svg'), self.icon, self.icon)
+                os.path.join(themes_dir, self.theme + '/cancel_blur.svg'), self.icon, self.icon)
             self.imagec.set_from_pixbuf(plo)
             self.lbl6.set_markup("<span foreground=\"white\">Cancel</span>")
         elif data == self.binds['hibernate']:
             plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                os.path.join(working_dir, 'themes/' + self.theme + '/hibernate_blur.svg'), self.icon, self.icon)
+                os.path.join(themes_dir, self.theme + '/hibernate_blur.svg'), self.icon, self.icon)
             self.imageh.set_from_pixbuf(plo)
             self.lbl7.set_markup("<span foreground=\"white\">Hibernate</span>")
     except:

@@ -4,7 +4,7 @@
 # =====================================================
 
 
-def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk, fn):
+def GUI(self, Gtk, GdkPixbuf, themes_dir, os, Gdk, fn):
     container = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
     spacer = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
     mainbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
@@ -35,7 +35,7 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk, fn):
     self.Eset.connect("leave-notify-event", self.on_mouse_out, self.binds['settings'])  # 2
 
     pset = GdkPixbuf.Pixbuf().new_from_file_at_size(
-        os.path.join(working_dir, 'configure.svg'), 48, 48)
+        os.path.join(themes_dir, 'configure.svg'), 48, 48)
     self.imageset = Gtk.Image().new_from_pixbuf(pset)
     self.Eset.add(self.imageset)
 
@@ -48,7 +48,7 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk, fn):
     self.Elig.connect("leave-notify-event", self.on_mouse_out, 'light')
 
     plig = GdkPixbuf.Pixbuf().new_from_file_at_size(
-        os.path.join(working_dir, 'light.svg'), 48, 48)
+        os.path.join(themes_dir, 'light.svg'), 48, 48)
     self.imagelig = Gtk.Image().new_from_pixbuf(plig)
     self.Elig.add(self.imagelig)
 
@@ -115,37 +115,37 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk, fn):
     for button in self.buttons:
         if button == "shutdown":
             psh = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                os.path.join(working_dir, 'themes/' + self.theme + '/shutdown.svg'), self.icon, self.icon)
+                os.path.join(themes_dir, self.theme + '/shutdown.svg'), self.icon, self.icon)
             self.imagesh = Gtk.Image().new_from_pixbuf(psh)
             self.Esh.add(self.imagesh)
         if button == "cancel":
             pc = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                os.path.join(working_dir, 'themes/' + self.theme + '/cancel.svg'), self.icon, self.icon)
+                os.path.join(themes_dir, self.theme + '/cancel.svg'), self.icon, self.icon)
             self.imagec = Gtk.Image().new_from_pixbuf(pc)
             self.Ec.add(self.imagec)
         if button == "restart":
             pr = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                os.path.join(working_dir, 'themes/' + self.theme + '/restart.svg'), self.icon, self.icon)
+                os.path.join(themes_dir, self.theme + '/restart.svg'), self.icon, self.icon)
             self.imager = Gtk.Image().new_from_pixbuf(pr)
             self.Er.add(self.imager)
         if button == "suspend":
             ps = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                os.path.join(working_dir, 'themes/' + self.theme + '/suspend.svg'), self.icon, self.icon)
+                os.path.join(themes_dir, self.theme + '/suspend.svg'), self.icon, self.icon)
             self.images = Gtk.Image().new_from_pixbuf(ps)
             self.Es.add(self.images)
         if button == "lock":
             plk = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                os.path.join(working_dir, 'themes/' + self.theme + '/lock.svg'), self.icon, self.icon)
+                os.path.join(themes_dir, self.theme + '/lock.svg'), self.icon, self.icon)
             self.imagelk = Gtk.Image().new_from_pixbuf(plk)
             self.Elk.add(self.imagelk)
         if button == "logout":
             plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                os.path.join(working_dir, 'themes/' + self.theme + '/logout.svg'), self.icon, self.icon)
+                os.path.join(themes_dir, self.theme + '/logout.svg'), self.icon, self.icon)
             self.imagelo = Gtk.Image().new_from_pixbuf(plo)
             self.El.add(self.imagelo)
         if button == "hibernate":
             ph = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                os.path.join(working_dir, 'themes/' + self.theme + '/hibernate.svg'), self.icon, self.icon)
+                os.path.join(themes_dir, self.theme + '/hibernate.svg'), self.icon, self.icon)
             self.imageh = Gtk.Image().new_from_pixbuf(ph)
             self.Eh.add(self.imageh)
 
