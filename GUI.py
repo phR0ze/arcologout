@@ -1,10 +1,8 @@
-
 # =====================================================
 #        Authors Brad Heffernan and Erik Dubois
 # =====================================================
 
-
-def GUI(self, Gtk, GdkPixbuf, themes_dir, os, Gdk, fn):
+def GUI(self, Gtk, GdkPixbuf, themes_dir, os, Gdk, get_themes):
     container = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
     spacer = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
     mainbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
@@ -296,7 +294,7 @@ def GUI(self, Gtk, GdkPixbuf, themes_dir, os, Gdk, fn):
     # self.hovers.set_text(str(self.hover))
 
     self.themes = Gtk.ComboBoxText()
-    lists = fn._get_themes()
+    lists = get_themes()
     active = 0
     for x in range(len(lists)):
         self.themes.append_text(lists[x])
