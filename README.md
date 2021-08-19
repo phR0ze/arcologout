@@ -28,15 +28,19 @@ override at `~/.config/arcologout/arcologout`.
 
 * `[commands]`
   * `shutdown=systemctl poweroff`
+  * `hibernate=systemctl hibernate`
+  * `logout=pkill -SIGTERM -f lxsession`
+  * `restart=systemctl reboot`
+  * `shutdown=systemctl poweroff`
+  * `suspend=systemctl suspend`
 
-* `[binds]`
+* `[binds]` each command can have a hot key assigned to it. the hot key will always be lower a single
+lower case character
   * `shutdown=S`
   * `restart=R`
   * `suspend=U`
   * `hibernate=H`
   * `logout=L`
-  * `cancel=Escape`
-  * `settings=P`
 
 # Packaging <a name="packaging"/></a>
 The core files are all intended to be installed at `/usr/share/arcologout`
@@ -48,8 +52,9 @@ The core files are all intended to be installed at `/usr/share/arcologout`
 ---
 
 # Backlog <a name="backlog"/></a>
-* Decouple BetterScreenLock from arcologout
-* The hot key for the options should always be visible to avoid bouncing and flickering
 * Text is not being accounted for in the visual weight on the screen. We need to adjust everything up
 
 # Changelog <a name="changelog"/></a>
+* The hot key for the options should always be visible to avoid bouncing and flickering
+* Removed lock, cancel, settings to clean up the display
+* Decouple BetterScreenLock from arcologout

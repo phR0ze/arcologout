@@ -96,32 +96,32 @@ class TransparentWindow(Gtk.Window):
             psh = GdkPixbuf.Pixbuf().new_from_file_at_size(
                 os.path.join(themes_dir, self.theme + '/shutdown_blur.svg'), self.icon, self.icon)
             self.imagesh.set_from_pixbuf(psh)
-            self.shutdown_label.set_markup("<span size=\"" + str(self.font) + "000\" foreground=\"" + self.hover + "\">Shutdown (S)</span>")
+            self.shutdown_label.set_markup("<span size=\"" + str(self.font) + "000\" foreground=\"" + self.hover + "\">Shutdown (" + data + ")</span>")
         elif data == self.binds.get('restart'):
             pr = GdkPixbuf.Pixbuf().new_from_file_at_size(
                 os.path.join(themes_dir, self.theme + '/restart_blur.svg'), self.icon, self.icon)
             self.imager.set_from_pixbuf(pr)
-            self.reboot_label.set_markup("<span size=\"" + str(self.font) + "000\" foreground=\"" + self.hover + "\">Reboot (R)</span>")
+            self.reboot_label.set_markup("<span size=\"" + str(self.font) + "000\" foreground=\"" + self.hover + "\">Reboot (" + data + ")</span>")
         elif data == self.binds.get('suspend'):
             ps = GdkPixbuf.Pixbuf().new_from_file_at_size(
                 os.path.join(themes_dir, self.theme + '/suspend_blur.svg'), self.icon, self.icon)
             self.images.set_from_pixbuf(ps)
-            self.suspend_label.set_markup("<span size=\"" + str(self.font) + "000\" foreground=\"" + self.hover + "\">Suspend (U)</span>")
+            self.suspend_label.set_markup("<span size=\"" + str(self.font) + "000\" foreground=\"" + self.hover + "\">Suspend (" + data + ")</span>")
         elif data == self.binds.get('logout'):
             plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
                 os.path.join(themes_dir, self.theme + '/logout_blur.svg'), self.icon, self.icon)
             self.imagelo.set_from_pixbuf(plo)
-            self.logout_label.set_markup("<span size=\"" + str(self.font) + "000\" foreground=\"" + self.hover + "\">Logout (L)</span>")
+            self.logout_label.set_markup("<span size=\"" + str(self.font) + "000\" foreground=\"" + self.hover + "\">Logout (" + data + ")</span>")
         elif data == self.binds.get('cancel'):
             plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
                 os.path.join(themes_dir, self.theme + '/cancel_blur.svg'), self.icon, self.icon)
             self.imagec.set_from_pixbuf(plo)
-            self.cancel_label.set_markup("<span size=\"" + str(self.font) + "000\" foreground=\"" + self.hover + "\">Cancel (ESC)</span>")
+            self.cancel_label.set_markup("<span size=\"" + str(self.font) + "000\" foreground=\"" + self.hover + "\">Cancel (" + data + ")</span>")
         elif data == self.binds.get('hibernate'):
             plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
                 os.path.join(themes_dir, self.theme + '/hibernate_blur.svg'), self.icon, self.icon)
             self.imageh.set_from_pixbuf(plo)
-            self.hibernate_label.set_markup("<span size=\"" + str(self.font) + "000\" foreground=\"" + self.hover + "\">Hibernate (H)</span>")
+            self.hibernate_label.set_markup("<span size=\"" + str(self.font) + "000\" foreground=\"" + self.hover + "\">Hibernate (" + data + ")</span>")
         event.window.set_cursor(Gdk.Cursor(Gdk.CursorType.HAND2))
 
     def on_mouse_out(self, widget, event, data):
@@ -130,32 +130,32 @@ class TransparentWindow(Gtk.Window):
                 psh = GdkPixbuf.Pixbuf().new_from_file_at_size(
                     os.path.join(themes_dir, self.theme + '/shutdown.svg'), self.icon, self.icon)
                 self.imagesh.set_from_pixbuf(psh)
-                self.shutdown_label.set_markup("<span size=\"" + str(self.font) + "000\">Shutdown</span>")
+                self.shutdown_label.set_markup("<span size=\"" + str(self.font) + "000\">Shutdown (" + data + ")</span>")
             elif data == self.binds.get('restart'):
                 pr = GdkPixbuf.Pixbuf().new_from_file_at_size(
                     os.path.join(themes_dir, self.theme + '/restart.svg'), self.icon, self.icon)
                 self.imager.set_from_pixbuf(pr)
-                self.reboot_label.set_markup("<span size=\"" + str(self.font) + "000\">Reboot</span>")
+                self.reboot_label.set_markup("<span size=\"" + str(self.font) + "000\">Reboot (" + data + ")</span>")
             elif data == self.binds.get('suspend'):
                 ps = GdkPixbuf.Pixbuf().new_from_file_at_size(
                     os.path.join(themes_dir, self.theme + '/suspend.svg'), self.icon, self.icon)
                 self.images.set_from_pixbuf(ps)
-                self.suspend_label.set_markup("<span size=\"" + str(self.font) + "000\">Suspend</span>")
+                self.suspend_label.set_markup("<span size=\"" + str(self.font) + "000\">Suspend (" + data + ")</span>")
             elif data == self.binds.get('logout'):
                 plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
                     os.path.join(themes_dir, self.theme + '/logout.svg'), self.icon, self.icon)
                 self.imagelo.set_from_pixbuf(plo)
-                self.logout_label.set_markup("<span size=\"" + str(self.font) + "000\">Logout</span>")
+                self.logout_label.set_markup("<span size=\"" + str(self.font) + "000\">Logout (" + data + ")</span>")
             elif data == self.binds.get('cancel'):
                 plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
                     os.path.join(themes_dir, self.theme + '/cancel.svg'), self.icon, self.icon)
                 self.imagec.set_from_pixbuf(plo)
-                self.cancel_label.set_markup("<span size=\"" + str(self.font) + "000\">Cancel</span>")
+                self.cancel_label.set_markup("<span size=\"" + str(self.font) + "000\">Cancel (" + data + ")</span>")
             elif data == self.binds.get('hibernate'):
                 plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
                     os.path.join(themes_dir, self.theme + '/hibernate.svg'), self.icon, self.icon)
                 self.imageh.set_from_pixbuf(plo)
-                self.hibernate_label.set_markup("<span size=\"" + str(self.font) + "000\">Hibernate</span>")
+                self.hibernate_label.set_markup("<span size=\"" + str(self.font) + "000\">Hibernate (" + data + ")</span>")
 
     def on_click(self, widget, event, data):
         self.click_button(widget, data)
@@ -285,17 +285,17 @@ def get_config(self, Gdk, Gtk, config):
 
         if self.parser.has_section("binds"):
             if self.parser.has_option("binds", "restart"):
-                self.binds['restart'] = self.parser.get("binds", "restart").capitalize()
+                self.binds['restart'] = self.parser.get("binds", "restart").upper()
             if self.parser.has_option("binds", "shutdown"):
-                self.binds['shutdown'] = self.parser.get("binds", "shutdown").capitalize()
+                self.binds['shutdown'] = self.parser.get("binds", "shutdown").upper()
             if self.parser.has_option("binds", "suspend"):
-                self.binds['suspend'] = self.parser.get("binds", "suspend").capitalize()
+                self.binds['suspend'] = self.parser.get("binds", "suspend").upper()
             if self.parser.has_option("binds", "hibernate"):
-                self.binds['hibernate'] = self.parser.get("binds", "hibernate").capitalize()
+                self.binds['hibernate'] = self.parser.get("binds", "hibernate").upper()
             if self.parser.has_option("binds", "logout"):
-                self.binds['logout'] = self.parser.get("binds", "logout").capitalize()
+                self.binds['logout'] = self.parser.get("binds", "logout").upper()
             if self.parser.has_option("binds", "cancel"):
-                self.binds['cancel'] = self.parser.get("binds", "cancel").capitalize()
+                self.binds['cancel'] = self.parser.get("binds", "cancel").upper()
 
         if self.parser.has_section("themes"):
             if self.parser.has_option("themes", "theme"):
