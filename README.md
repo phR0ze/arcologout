@@ -43,11 +43,7 @@ lower case character
   * `logout=L`
 
 # Packaging <a name="packaging"/></a>
-The core files are all intended to be installed at `/usr/share/arcologout`
-
-* `config/arcologout` is intended to be installed at `/usr/bin`
-* `config/arcologout.conf` is intended to be installed at `/etc/arcologout.conf`
-* `themes` is intended to be installed at `/usr/share/arcologout/themes`
+[PKGBUILD suitable for the AUR](https://github.com/phR0ze/cyberlinux-aur/tree/master/arcologout)
 
 ---
 
