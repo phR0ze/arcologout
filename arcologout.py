@@ -7,7 +7,6 @@ import cairo
 import gi
 import shutil
 import GUI
-import Modal
 import os
 import signal
 import subprocess
@@ -38,7 +37,7 @@ class TransparentWindow(Gtk.Window):
     cmd_suspend = "systemctl suspend"
     cmd_hibernate = "systemctl hibernate"
     cmd_lock = 'betterlockscreen -l dim -- --time-str="%H:%M"'
-    wallpaper = "/usr/share/arcologout/wallpaper.jpg"
+    wallpaper = os.path.join(themes_dir, "wallpaper.jpg")
     d_buttons = ['cancel',
                  'shutdown',
                  'restart',
@@ -64,8 +63,6 @@ class TransparentWindow(Gtk.Window):
 
     def __init__(self):
         super(TransparentWindow, self).__init__(type=Gtk.WindowType.TOPLEVEL, title="ArcoLogout")
-        # Gtk.Window.__init__(self, type=Gtk.WindowType.TOPLEVEL)
-        # self.set_type_hint(Gdk.WindowTypeHint.DOCK)
         self.set_keep_above(True)
         self.set_position(Gtk.WindowPosition.CENTER_ALWAYS)
         self.set_size_request(300, 220)
@@ -122,7 +119,6 @@ class TransparentWindow(Gtk.Window):
 
 
     def on_save_clicked(self, widget):
-
         try:
             with open(config_file, "r") as f:
                 lines = f.readlines()
@@ -277,7 +273,6 @@ class TransparentWindow(Gtk.Window):
                 self.click_button(widget, key)
 
     def click_button(self, widget, data=None):
-
         if not data == self.binds.get('settings') and not data == "light":
             self.active = True
             button_toggled(self, data)
@@ -448,8 +443,6 @@ def get_config(self, Gdk, Gtk, config):
         if self.parser.has_section("themes"):
             if self.parser.has_option("themes", "theme"):
                 self.theme = self.parser.get("themes", "theme")
-            # if self.parser.has_option("themes", "hover_color"):
-            #     self.hover = self.parser.get("themes", "hover_color")
 
         if len(self.theme) > 1:
             style_provider = Gtk.CssProvider()
