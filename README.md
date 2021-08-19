@@ -16,14 +16,20 @@
 override at `~/.config/arcologout/arcologout`.
 
 * `[settings]`
+  * `opacity=80`
   * `icon_size=200`
+  * `font_size=40`
   * `buttons` is a comma delimited list of buttons to show in the overlay. It supports `cancel`,
-  `logout`, `restart`, `shutdown`, `suspend`, `hibernate` and `lock` however the default config drops
-  `cancel` and `lock` as escape to cancel is automatic for most people and most distros have lock set
-  up as a hot key sequence.
+  `logout`, `restart`, `shutdown`, `suspend`, and `hibernate` however the default config drops
+  `cancel` as escape to cancel is automatic for most people.
+
+* `[themes]`
+  * `theme=white`
+
+* `[commands]`
+  * `shutdown=systemctl poweroff`
 
 * `[binds]`
-  * `lock=K`
   * `shutdown=S`
   * `restart=R`
   * `suspend=U`
@@ -31,20 +37,6 @@ override at `~/.config/arcologout/arcologout`.
   * `logout=L`
   * `cancel=Escape`
   * `settings=P`
-
-```
-[settings]
-opacity=80
-icon_size=64
-font_size=11
-buttons=logout,restart,shutdown,suspend,hibernate
-
-[themes]
-theme=white
-
-[commands]
-lock=betterlockscreen -l dim -- --time-str="%H:%M"
-```
 
 # Packaging <a name="packaging"/></a>
 The core files are all intended to be installed at `/usr/share/arcologout`
