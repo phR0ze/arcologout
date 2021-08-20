@@ -270,18 +270,20 @@ def get_config(self, Gdk, Gtk, config):
                 self.icon = int(self.parser.get("settings", "icon_size"))
             if self.parser.has_option("settings", "font_size"):
                 self.font = int(self.parser.get("settings", "font_size"))
+            if self.parser.has_option("settings", "theme"):
+                self.theme = self.parser.get("settings", "theme")
 
         if self.parser.has_section("commands"):
             if self.parser.has_option("commands", "hibernate"):
-                self.cmd_shutdown = str(self.parser.get("commands", "hibernate"))
+                self.cmd_hibernate = str(self.parser.get("commands", "hibernate"))
             if self.parser.has_option("commands", "logout"):
-                self.cmd_shutdown = str(self.parser.get("commands", "logout"))
+                self.cmd_logout = str(self.parser.get("commands", "logout"))
             if self.parser.has_option("commands", "restart"):
-                self.cmd_shutdown = str(self.parser.get("commands", "restart"))
+                self.cmd_restart = str(self.parser.get("commands", "restart"))
             if self.parser.has_option("commands", "shutdown"):
                 self.cmd_shutdown = str(self.parser.get("commands", "shutdown"))
             if self.parser.has_option("commands", "suspend"):
-                self.cmd_shutdown = str(self.parser.get("commands", "suspend"))
+                self.cmd_suspend = str(self.parser.get("commands", "suspend"))
 
         if self.parser.has_section("binds"):
             if self.parser.has_option("binds", "restart"):
@@ -296,10 +298,6 @@ def get_config(self, Gdk, Gtk, config):
                 self.binds['logout'] = self.parser.get("binds", "logout").upper()
             if self.parser.has_option("binds", "cancel"):
                 self.binds['cancel'] = self.parser.get("binds", "cancel").upper()
-
-        if self.parser.has_section("themes"):
-            if self.parser.has_option("themes", "theme"):
-                self.theme = self.parser.get("themes", "theme")
 
         if len(self.theme) > 1:
             style_provider = Gtk.CssProvider()

@@ -19,12 +19,10 @@ override at `~/.config/arcologout/arcologout`.
   * `opacity=80`
   * `icon_size=150`
   * `font_size=25`
+  * `theme=white`
   * `buttons` is a comma delimited list of buttons to show in the overlay. It supports `cancel`,
   `logout`, `restart`, `shutdown`, `suspend`, and `hibernate` however the default config drops
   `cancel` as escape to cancel is automatic for most people.
-
-* `[themes]`
-  * `theme=white`
 
 * `[commands]`
   * `shutdown=systemctl poweroff`
